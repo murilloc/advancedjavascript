@@ -115,4 +115,11 @@ obj1.hasOwnProperty("lastName");
 
    
 - Understanding Prototypes
+    - Almost every object is linked to another object and that object is the prototype
+    - An object inherits all the properties and methods from it's prototype ancestry 
+    - A prototype is automatically assigned to any object
+    - You can define an object prototype
+    - You can change properties anf method a prototype
+
+    
   

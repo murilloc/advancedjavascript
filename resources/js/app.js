@@ -1,74 +1,41 @@
-var name = "global";
+/// Prototype
 
-// Observe that the function is invoked as a obj1 method
-var obj1 = {
-    name: "obj1",
-    func1: function () {
-        console.log("From func1 in  obj1");
-        console.log(this);
-        console.log(this.name);
-    }
+var obj = {};
+
+//true
+console.log("toString" in obj);
+
+//false
+console.log(obj.hasOwnProperty("toString"));
+
+console.log(obj);
+
+var arr = [1,2,3];
+console.log(arr);
+
+var date = new Date();
+console.log(date);
+
+// Overriding a method of a prototype
+obj.toString = function(){
+    console.log("object");
 };
 
+obj.toString();
 
-obj1.func1();
+//true
+console.log("toString" in obj);
 
-
-var obj2 = {
-    name: "obj2",
-    func2: obj1.func1
-}
-
-obj2.func2();
-
-var func3 = function () {
-    console.log("From func3 --");
-    console.log(this);
-    console.log(this.name);
-};
-
-this.func3();
-
-var obj3 = {
-    name: "Obj3",
-    func3: func3
-};
-
-obj3.func3();
+//true
+console.log(obj.hasOwnProperty("toString"));
 
 
-var obj4 = {
-    name: "obj4",
-    obj5: {
-        name: "obj5",
-        func5: function () {
-            console.log("From obj5 func5 --");
-            console.log(this);
-            console.log(this.name);
+delete obj.toString;
 
-        }
-    }
-};
+//true
+console.log("toString" in obj);
 
-obj4.obj5.func5();
+//false
+console.log(obj.hasOwnProperty("toString"));
 
-var func6 = function () {
-    console.log("func6");
-};
-
-func6.name = "func6";
-
-func6.func7 = function () {
-    console.log("From func7 in func6 --");
-    console.log(this);
-    console.log(this.name);
-
-};
-
-func6.func7();
-
-
-
-
-
-
+console.log(obj.toString());
